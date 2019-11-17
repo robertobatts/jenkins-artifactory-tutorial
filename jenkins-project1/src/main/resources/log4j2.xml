@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Properties>
+        <Property name="log-path">/Users/vasuparicherla/Desktop/logs/</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p %C{1.} %M() :: %m %n"/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="${log-path}core_main_dassim_logs.log"
+                     filePattern="${log-path}core_main_dassim_logs_%d{dd-MM-yyyy}-%i.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X %5p %C %M() : %m %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="5 MB" />
+                <OnStartupTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+
+        <!-- CACHING SERVICES STARTS HERE -->
+        <logger name="biz.cogitare.dassim.track.services" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.dassim.track.caches.services" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.nodal.network.components" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.nodal.network.services" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.framework.config.services" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.graphdb.services" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+        <!-- CACHING SERVICES ENDS HERE -->
+
+
+        <logger name="biz.cogitare.tracks" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare.dassim" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="biz.cogitare" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+        <logger name="org.hibernate.validator" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </logger>
+
+    </Loggers>
+
+</Configuration>
