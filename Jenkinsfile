@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    triggers {
+        bitbucketPush()
+    }
 
     tools {
         jdk 'OpenJDK_1_8_0'
